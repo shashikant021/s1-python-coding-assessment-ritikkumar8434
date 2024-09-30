@@ -16,8 +16,6 @@ def decode_message(s: str, p: str) -> bool:
             elif p[j - 1] == '?':
                 dp[i][j] = dp[i - 1][j - 1]
             else:
-                # Regular character must match exactly
                 dp[i][j] = dp[i - 1][j - 1] and s[i - 1] == p[j - 1]
     
-    # The answer is whether the entire string matches the entire pattern
     return dp[m][n]
