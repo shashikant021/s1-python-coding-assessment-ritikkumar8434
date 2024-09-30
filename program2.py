@@ -1,5 +1,29 @@
-def decode_message( s: str, p: str) -> bool:
-
-# write your code here
-  
-        return False
+def decode_message(s: str, p: str) -> bool:
+    m, n = len(s), len(p)
+    
+    # dp[i][j] will be True if s[:i] matches p[:j]
+    dp = [[False] * (n + 1) for _ in range(m + 1)]
+    
+    # Base case: Empty string matches empty pattern
+    dp[0][0] = True
+    
+    # Fill dp for cases where pattern contains '*' at the beginning (can match empty string)
+    for j in range(1, n + 1):
+        if p[j - 1] == '*':
+            dp[0][j] = dp[0][j - 1]
+    
+    # Fill the dp table
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if p[j - 1] == '*':
+                # '*' can match zero or more characters:
+                dp[i][j] = dp[i][j - 1] or dp[i - 1][j]
+            elif p[j - 1] == '?':
+                # '?' can match exactly one character
+                dp[i][j] = dp[i - 1][j - 1]
+            else:
+                # Regular character must match exactly
+                dp[i][j] = dp[i - 1][j - 1] and s[i - 1] == p[j - 1]
+    
+    # The answer is whether the entire string matches the entire pattern
+    return dp[m][n]
