@@ -1,7 +1,6 @@
 def decode_message(s: str, p: str) -> bool:
     m, n = len(s), len(p)
     
-    # dp[i][j] will be True if s[:i] matches p[:j]
     dp = [[False] * (n + 1) for _ in range(m + 1)]
     
     # Base case: Empty string matches empty pattern
