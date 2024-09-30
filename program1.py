@@ -16,7 +16,6 @@ class Solution:
             dfs(r, c - 1)  # Left
             dfs(r, c + 1)  # Right
         
-        # Count of islands
         island_count = 0
         
     
