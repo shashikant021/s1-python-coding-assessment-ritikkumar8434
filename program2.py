@@ -3,7 +3,6 @@ def decode_message(s: str, p: str) -> bool:
     
     dp = [[False] * (n + 1) for _ in range(m + 1)]
     
-    # Base case: Empty string matches empty pattern
     dp[0][0] = True
     
     # Fill dp for cases where pattern contains '*' at the beginning (can match empty string)
