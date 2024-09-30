@@ -22,7 +22,7 @@ class Solution:
         # Iterate over the grid
         for r in range(rows):
             for c in range(cols):
-                # Start DFS if an unvisited land is found
+            
                 if grid[r][c] == 'L':
                     island_count += 1
                     dfs(r, c)
