@@ -19,7 +19,7 @@ class Solution:
         # Count of islands
         island_count = 0
         
-        # Iterate over the grid
+    
         for r in range(rows):
             for c in range(cols):
             
